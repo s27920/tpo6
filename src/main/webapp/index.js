@@ -2,9 +2,16 @@
 
 turnButtonsOffOn("hidden");
 
-function insertElement(){
+class Restaurant{
+    constructor(){
+
+    }
+}
+
+function insertElement(text){
     const newLi = document.createElement("li");
     const newDiv = document.createElement("div");
+    newDiv.innerText
     document.getElementById("enumerate-list").append(newLi);
     newDiv.className = "enumerate";
     newLi.append(newDiv);
@@ -99,14 +106,30 @@ function search(){
         cuisines: cusinesChecked,
         prices: pricesChecked
     };
-    fetch('helloServlet', {
-        method: 'POST', headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(requests)
-    }).then(result => {
-        console.log('Success:', result);
-    }).catch(error => {
-        console.error('Error:', error);
-    });
+    fetch('hello-servlet', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestJson)
+    })
+        .then(response => {
+            return response.json();
+        })
+        .then(result => {
+            removeAllElements();
+            result.forEach(restaurant =>{
+                console.log("below here")
+                console.log(restaurant);
+                console.log("above here")
+                // console.log(restaurant.name);
+                insertElement(restaurant.name);
+            });
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
 function turnButtonsOffOn(toggle){

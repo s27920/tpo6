@@ -23,19 +23,19 @@
                 <i id ="FilterLogoSpan1" class="fa-solid fa-wifi"></i>
                 Features</button>
             <div class = "ftListDiv">
-                <input type="checkbox" name="dogFriendly" id="dogFriendly" class="featureCheckBox">
+                <input type="checkbox" name="Pet Friendly" id="dogFriendly" class="featureCheckBox">
                 <label for="dogFriendly">Dog friendly</label>
             </div>
             <div class = "ftListDiv">
-                <input type="checkbox" name="freeWifi" id="freewifi" class="featureCheckBox">
+                <input type="checkbox" name="Free Wi-Fi" id="freewifi" class="featureCheckBox">
                 <label for="freewifi">Free wifi</label>
             </div>
             <div class = "ftListDiv">
-                <input type="checkbox" name="wheelchairAccessible" id="wheelchairaccessible" class="featureCheckBox">
+                <input type="checkbox" name="Wheelchair Accessible" id="wheelchairaccessible" class="featureCheckBox">
                 <label for="wheelchairaccessible">Wheelchair accessible</label>
             </div>
             <div class = "ftListDiv">
-                <input type="checkbox" name="outdoorSeating" id="outdoorseating" class="featureCheckBox">
+                <input type="checkbox" name="Outdoor Seating" id="outdoorseating" class="featureCheckBox">
                 <label for="outdoorseating">Outdoor seating</label>
             </div>
         </div>
@@ -83,7 +83,7 @@
 
 <div id = "searchBar">
     <button id="removeBtn" onclick="removeAllElements()">purge</button>
-    <button id="addBtm" onclick="insertElement()">add</button>
+    <button id="addBtm" onclick="insertElement('')">add</button>
     <i id="searchIcon" class="fa-solid fa-magnifying-glass"></i>
 </div>
 
