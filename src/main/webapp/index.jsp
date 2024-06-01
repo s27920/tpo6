@@ -12,23 +12,72 @@
 <div id = "searchOptions">
     <label for="searchBox">Search:</label>
     <input type="text" id = "searchBox">
-    <button class = "searchBarBtns" id="searchButton">Search</button>
+    <button class = "searchBarBtns" id = "searchButton">Search</button>
     <button class = "searchBarBtns" id = "filterButton">Filter</button>
     <button id="exitButton">x</button>
     <hr id="break">
-    <select name="" id="selectFeature" multiple size = "2">
-        <option value="dog Friendly">dog Friendly</option>
-        <option value="outdoor seating">outdoor seating</option>
-        <option value="free wifi">free wifi</option>
-        <option value="wheelchair accessible">wheelchair accessible</option>
-    </select><br>
-    <input type="text" name="" id="lowStarInput" placeholder="from">
-    <input type="text" name="" id="highStarInput" placeholder="to"><br>
-    <select name="" id="costSelect">
-        <option value="$$$">$$$</option>
-        <option value="$$">$$</option>
-        <option value="$">$</option>
-    </select>
+
+    <div id="featureListDiv">
+        <div id = "innerFilterDivInstance1" class = "innerFilterDiv">
+            <button id="filterSpanButtonInstance1" class = "filterSpanButton">
+                <i id ="FilterLogoSpan1" class="fa-solid fa-wifi"></i>
+                Features</button>
+            <div class = "ftListDiv">
+                <input type="checkbox" name="dogFriendly" id="dogFriendly" class="featureCheckBox">
+                <label for="dogFriendly">Dog friendly</label>
+            </div>
+            <div class = "ftListDiv">
+                <input type="checkbox" name="freeWifi" id="freewifi" class="featureCheckBox">
+                <label for="freewifi">Free wifi</label>
+            </div>
+            <div class = "ftListDiv">
+                <input type="checkbox" name="wheelchairAccessible" id="wheelchairaccessible" class="featureCheckBox">
+                <label for="wheelchairaccessible">Wheelchair accessible</label>
+            </div>
+            <div class = "ftListDiv">
+                <input type="checkbox" name="outdoorSeating" id="outdoorseating" class="featureCheckBox">
+                <label for="outdoorseating">Outdoor seating</label>
+            </div>
+        </div>
+        <div id = "innerFilterDivInstance3" class = "innerFilterDiv">
+            <button id="filterSpanButtonInstance3" class = "filterSpanButton">
+                <i id ="FilterLogoSpan3" class="fa-solid fa-bowl-food"></i>
+                Cuisine</button>
+            <div class = "ftListDiv">
+                <input type="checkbox" name="Italian" class="cuisineCheckBox" id = "Italian">
+                <label for="Italian">Italian</label>
+            </div>
+            <div class = "ftListDiv">
+                <input type="checkbox" name="Korean" class="cuisineCheckBox" id = "Korean">
+                <label for="Korean">Korean</label>
+            </div>
+            <div class = "ftListDiv">
+                <input type="checkbox" name = "Japanese" class="cuisineCheckBox" id = "Japanese">
+                <label for="Japanese">Japanese</label>
+            </div>
+            <div class = "ftListDiv">
+                <input type="checkbox" name = "Georgian" class="cuisineCheckBox" id = "Georgian">
+                <label for="Georgian">Georgian</label>
+            </div>
+        </div>
+        <div id = "innerFilterDivInstance2" class = "innerFilterDiv">
+            <button id="filterSpanButtonInstance2" class = "filterSpanButton">
+                <i id ="FilterLogoSpan2" class="fa-solid fa-dollar-sign"></i>
+                Price range</button>
+            <div class = "ftListDiv">
+                <input type="checkbox" name = "$$$"; class="priceCheckBox" id="$$$";>
+                <label for="$$$";>$$$</label>
+            </div>
+            <div class = "ftListDiv">
+                <input type="checkbox" name = "$$" class="priceCheckBox" id="$$">
+                <label for="$$">$$</label>
+            </div>
+            <div class = "ftListDiv">
+                <input type="checkbox" name = "$" class="priceCheckBox" id="$">
+                <label for="$">$</label>
+            </div>
+        </div>
+    </div>
 
 </div>
 
@@ -36,7 +85,6 @@
     <button id="removeBtn" onclick="removeAllElements()">purge</button>
     <button id="addBtm" onclick="insertElement()">add</button>
     <i id="searchIcon" class="fa-solid fa-magnifying-glass"></i>
-    <button></button>
 </div>
 
 <div id="soapBox">

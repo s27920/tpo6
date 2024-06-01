@@ -22,11 +22,21 @@ body{
 .enumerate:hover{
     background-color: hsl(210, 7%, 88%);
 }
-
-
-
-.buttonDiv{
-    padding: 6px;
+#spanFilterButton{
+    width: 70px;
+    height: 35px;
+}
+#FilterLogoSpan1{
+    color: rgb(84, 84, 84);
+    height: 5px;
+}
+#FilterLogoSpan2{
+    color: rgb(84, 84, 84);
+    height: 5px;
+}
+#FilterLogoSpan3{
+    color: rgb(84, 84, 84);
+    height: 5px;
 }
 
 .scrollBtn{
@@ -34,6 +44,43 @@ body{
     height: 30px;
     border-radius: 15px;
     cursor: pointer;
+}
+
+#featureListDiv{
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: xx-small;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.innerFilterDiv{
+    overflow: hidden;
+    background-color: hsl(0, 0%, 95%);
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: hsl(0, 0%, 75%);
+    transition: height 0.2s ease-out;
+    height: 20px;
+}
+.buttonDiv{
+    padding: 6px;
+}
+.filterSpanButton{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(84, 84, 84);
+    border-radius: 9px;
+    border: 1px solid;
+    border-color: rgb(84, 84, 84);
+    height: 20px;
+}
+.filterSpanButton:hover{
+    border-color: rgb(156, 1, 1);
+    background-color: hsl(0, 77%, 95%);
+}
+.filterSpanButton:active{
+    border-color: rgb(214, 214, 214);
 }
 
 #soapBox{
@@ -82,9 +129,11 @@ body{
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     overflow: hidden;
+    transition: height 0.2s ease-out;
+    transition: top 0.5s ease-out;
 }
 #closeFiltersButton{
-    margin-top: 90%;
+    /* margin-top: 90%; */
     position: absolute;
 }
 #exitButton{
@@ -106,34 +155,19 @@ body{
     transform: translate(1px, 1px);
 }
 
-.slidDown{
-    animation: 0.5s ease-out 0s 1 running slideDown;
+#innerFilterDivInstance1{
+    max-width: 92px;
 }
-
-.slidUp{
-    animation: 0.5s ease-out 0s 1 running slideUp;
-}
-@keyframes slideDown{
-    from{top: -25px;}
-    to {top: 0px}
-}
-@keyframes slideUp{
-    from{top: 0px}
-    to {top: -25px}
-}
-
-.extended{
-    animation: 0.5s ease-out 0s 1 running extend;
-}
-.shrunk{
-    animation: 0.5s ease-out 0s 1 running shrink;
-}
-
-@keyframes extend {
-    from{height: 25px;}
-    to{height: 300px;}
-}
-@keyframes shrink {
-    from{height: 300px;}
-    to{height: 25px;}
+.ftListDiv{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    margin: 1px;
+    font-family: "Cabin", Verdana;
+    color: rgb(85, 85, 85);
+    padding-top: 2px;
+    padding-bottom: 2px;
 }

@@ -1,4 +1,5 @@
 
+
 turnButtonsOffOn("hidden");
 
 function insertElement(){
@@ -59,88 +60,114 @@ function scrollBack(){
 function checkListScrollability(){
     const list = document.getElementById("enumerate-list");
     if (list.scrollWidth > list.clientWidth){
-        console.log("true");
         return true;
     }
-    console.log("false");
     return false;
+}
+document.getElementById("searchButton").addEventListener("click", ()=>{
+    search();
+});
+
+function search(){
+    let searchPhrase = document.getElementById("searchBox").value;
+    let featureCheckBoxes = Array.from(document.getElementsByClassName("featureCheckBox"));
+    let cuisineCheckBoxes = Array.from(document.getElementsByClassName("cuisineCheckBox"));
+    let priceCheckBoxes = Array.from(document.getElementsByClassName("priceCheckBox"));
+    let featuresChecked = [];
+    let cusinesChecked = [];
+    let pricesChecked = [];
+
+    featureCheckBoxes.forEach(checkBox=>{
+        if(checkBox.checked){
+            featuresChecked.push(checkBox.name);
+        }
+    });
+    cuisineCheckBoxes.forEach(cuisineBox=>{
+        if(cuisineBox.checked){
+            cusinesChecked.push(cuisineBox.name)
+        }
+    });
+    priceCheckBoxes.forEach(priceBox=>{
+        if(priceBox.checked){
+            pricesChecked.push(priceBox.name);
+        }
+    });
+
+    const requestJson ={
+        search: searchPhrase,
+        features: featuresChecked,
+        cuisines: cusinesChecked,
+        prices: pricesChecked
+    };
+    fetch('helloServlet', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(requests)
+    }).then(result => {
+        console.log('Success:', result);
+    }).catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 function turnButtonsOffOn(toggle){
-    //quick note. I spent about an hour trying to over-engineer a fancy solution instead of just passing a string... fml
+    //quick note. I spent about an hour trying to overengineer a fancy solution instead of just passing a string... fml
     const buttons = document.querySelectorAll(".scrollBtn");
     buttons.forEach(button =>{
         button.style.visibility = toggle;
     })
 }
-let droppedDown = false;
-let extended = false;
+
 document.getElementById("searchIcon").addEventListener("click", event =>{
-    if(!droppedDown){
-        slideDown();
-    }else{
-        slideUp();
-    }
+    let target = document.getElementById("searchOptions");
+    closeOutSearchBar(target);
 });
 
 document.getElementById("exitButton").addEventListener("click", event=>{
-    if(droppedDown && extended){
-        setTimeout(slideUp,490);
-    }else{
-        slideUp();
-    }
-    if(extended){
-        hide();
-    }
+    let target = document.getElementById("searchOptions");
+    closeOutSearchBar(target);
 });
 
 
 document.getElementById("filterButton").addEventListener("click", ()=>{
-    if(extended){
-        hide();
-    }else{
-        extend();
-    }
+    let target = document.getElementById("searchOptions");
+    extend(target, "300px", "25px");
 });
 
-function slideUp(){
-    let target = document.getElementById("searchOptions");
-    target.classList.add("slidUp");
-    setTimeout(()=>{ 
-        target.style.top = "-25px";
-        droppedDown = false;
-        target.classList.remove("slidUp");
-    },490);
-}
-function slideDown(){
-    let target = document.getElementById("searchOptions");
-        target.classList.add("slidDown");
-        droppedDown = true;
-        setTimeout(()=>{ 
-            target.style.top = 0;
-            target.classList.remove("slidDown");
-        },490);
+function closeOutSearchBar(target){
+    if (target.style.height === "300px" && target.style.top === "0px") {
+        extend(target, "300px", "25px");
+        setTimeout(()=>{
+            slideTmp(target, "-25px");
+        },100);
+    }else{
+        slideTmp(target, "-25px")
+    }
 }
 
-function extend(){
-    let target = document.getElementById("searchOptions");
-    target.classList.add("extended");
-    setTimeout(()=>{
-        target.style.height = "300px";
-        extended = true;
-        target.classList.remove("extended");
-    },490);
+function extend(target, extended, shrunk){
+    if (target.style.height === shrunk || target.style.height==="") {
+        target.style.height = extended;
+    } else {
+        target.style.height = shrunk;
+    }
 }
-function hide(){
-    let target = document.getElementById("searchOptions");
-    target.classList.add("shrunk");
-    setTimeout(()=>{
-        target.style.height = "25px";
-        extended = false;
-        target.classList.remove("shrunk");
-    },490);
+function slideTmp(target, ammount){
+    if(target.style.top === ammount || target.style.top===""){
+        target.style.top = "0px"
+    }else{
+        target.style.top = ammount
+    }
 }
 
-
-
-
+document.getElementById("filterSpanButtonInstance1").addEventListener("click", event=>{
+    let target = event.target.parentNode;
+    extend(target, "200px", "20px")
+});
+document.getElementById("filterSpanButtonInstance2").addEventListener("click", event=>{
+    let target = event.target.parentNode;
+    extend(target, "200px", "20px")
+});
+document.getElementById("filterSpanButtonInstance3").addEventListener("click", event=>{
+    let target = event.target.parentNode;
+    extend(target, "200px", "20px")
+});
